@@ -50,6 +50,7 @@ int main()
     int d = 2;
     int n = 6;
     leftRotate(arr,d,n);
+    return 0;
     
 
 }
