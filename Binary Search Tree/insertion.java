@@ -20,6 +20,40 @@ public class insertion {
         root = recursiveInsert(root, key);
     }
 
+    void delete(int key) {
+        root = recursiveDelete(root, key);
+    }
+
+    Node recursiveDelete(Node root, int key) {
+        if (root == null) {
+            return root;
+        }
+        if (key < root.data) {
+            root.left = recursiveDelete(root.left, key);
+        } else if (key > root.data) {
+            root.right = recursiveDelete(root.right, key);
+        } else {
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+            root.data = minValue(root.right);
+
+            root.right = recursiveDelete(root.right, root.data);
+        }
+        return root;
+    }
+
+    int minValue(Node root) {
+        int minv = root.data;
+        while (root.left != null) {
+            minv = root.left.data;
+            root = root.left;
+        }
+        return minv;
+    }
+
     Node recursiveInsert(Node root, int key) {
         if (root == null) {
             root = new Node(key);
@@ -47,13 +81,12 @@ public class insertion {
     }
 
     public boolean search(int data) {
-      root =  searchBST(root, data);
-      if(root!=null){
-          return true;
-      }
-      else{
-          return false;
-      }
+        root = searchBST(root, data);
+        if (root != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     Node searchBST(Node root, int key) {
