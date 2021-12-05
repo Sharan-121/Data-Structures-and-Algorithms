@@ -2,19 +2,19 @@ public class BinHeap {
     static void maxHeapify(int arr[], int n, int i) {
         int left = (2 * i) + 1;
         int right = (2 * i) + 2;
-        int smallest = i;
+        int largest = i;
 
-        if (left < n && arr[left] > arr[smallest]) {
-            smallest = left;
+        if (left < n && arr[left] > arr[largest]) {
+            largest = left;
         }
-        if (right < n && arr[right] > arr[smallest]) {
-            smallest = right;
+        if (right < n && arr[right] > arr[largest]) {
+            largest = right;
         }
-        if (smallest != i) {
+        if (largest != i) {
             int temp = arr[i];
-            arr[i] = arr[smallest];
-            arr[smallest] = temp;
-            maxHeapify(arr, n, smallest);
+            arr[i] = arr[largest];
+            arr[largest] = temp;
+            maxHeapify(arr, n, largest);
         }
     }
 
