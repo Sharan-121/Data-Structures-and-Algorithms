@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class BinHeap {
     static void maxHeapify(int arr[], int n, int i) {
         int left = (2 * i) + 1;
@@ -17,6 +21,8 @@ public class BinHeap {
             maxHeapify(arr, n, largest);
         }
     }
+
+
 
     static void minHeapify(int arr[], int n, int i) {
         int left = (2 * i) + 1;
@@ -65,13 +71,58 @@ public class BinHeap {
         }
     }
 
+    static void insert(int arr[],int val){
+         arr[arr.length-1] = val;
+
+         int index = arr.length-1;
+
+         
+
+         while(index > 0){
+            int parent = index/2;
+             if(arr[index] > arr[parent]){
+                 int temp = arr[index];
+                 arr[index] = arr[parent];
+                 arr[parent] = temp;
+
+                 index = parent;
+             }
+             else{
+                 break;
+             }
+         }
+    }
+
     public static void main(String[] args) {
-        int[] arr = { 15, 3, 2, 25, 7, 17, 20, 8, 4 };
+        int arr[] = new int[10];
+        int tempArr[] = { 15, 3, 2, 25, 7, 17, 20, 8, 4};
+        for(int i =0;i<9;i++){
+            arr[i] = tempArr[i];
+        }
         buildHeap(arr, arr.length);
         printHeap(arr, arr.length);
-        heapSort(arr);
-        System.out.println("After Heap Sort:");
+
+        // arr[9] = 30;
+        
+        //Inserting New Element
+
+        insert(arr,30);
         printHeap(arr, arr.length);
 
-    }
+
+
+
+        
+        
+
+        // printHeap(arr, arr.length);
+
+        
+
+        // heapSort(arr);
+        // System.out.println("After Heap Sort:");
+        // printHeap(arr, arr.length);
+
+    
+}
 }
