@@ -1,7 +1,6 @@
 import java.util.Stack;
 
 
-
 public class postfixToPrefix {
     static int operatorCheck(char x){
         switch(x){
@@ -9,7 +8,6 @@ public class postfixToPrefix {
             case '-':
             case '*':
             case '/':
-            
                 return 1;
             default:
                 return 0;
@@ -35,11 +33,12 @@ public class postfixToPrefix {
         }
         return stack.pop();
 
+
     }
 
     public static void main(String args[]){
         String exp = "ABC/-AK/L-*";
-    System.out.println("Prefix : " + Convert(exp));
+        System.out.println("Prefix : " + Convert(exp));
         
     } 
 }
